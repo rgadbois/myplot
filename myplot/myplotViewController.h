@@ -9,10 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "CorePlot-CocoaTouch.h"
 @interface myplotViewController : UIViewController <CPTPlotDataSource> {
-    
-	CPTXYGraph *graph;
-	
-	NSMutableArray *dataForPlot;
+    IBOutlet CPTGraphHostingView *hostingView;
+    CPTXYGraph *graph;
+    NSArray *plotData;
+    CPTFill *areaFill;
+    CPTLineStyle *barLineStyle;
 }
 @property(readwrite, retain, nonatomic) NSMutableArray *dataForPlot;
 

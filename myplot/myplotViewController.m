@@ -22,7 +22,10 @@
 
 -(void)dealloc 
 {
-	[dataForPlot release];
+	[plotData release];
+    [graph release];
+    [areaFill release];
+    [barLineStyle release];
     [super dealloc];
 }
 
@@ -30,145 +33,122 @@
 {
     [super viewDidLoad];
     
-    // Create graph from theme
+    // If you make sure your dates are calculated at noon, you shouldn't have to 
+    // worry about daylight savings. If you use midnight, you will have to adjust
+    // for daylight savings time.
+    NSDate *refDate = [NSDate dateWithNaturalLanguageString:@"12:00 Oct 29, 2009"];
+    NSTimeInterval oneDay = 24 * 60 * 60;
+    
+    // Create graph from theme    // Create graph from theme
     graph = [[CPTXYGraph alloc] initWithFrame:CGRectZero];
 	CPTTheme *theme = [CPTTheme themeNamed:kCPTDarkGradientTheme];
     [graph applyTheme:theme];
-	CPTGraphHostingView *hostingView = (CPTGraphHostingView *)self.view;
+	hostingView = (CPTGraphHostingView *)self.view;
     hostingView.collapsesLayers = NO; // Setting to YES reduces GPU memory usage, but can slow drawing/scrolling
     hostingView.hostedGraph = graph;
-	
-    graph.paddingLeft = 10.0;
-	graph.paddingTop = 10.0;
-	graph.paddingRight = 10.0;
-	graph.paddingBottom = 10.0;
+
     
-    // Setup plot space
+    // Title
+    CPTMutableTextStyle *textStyle = [CPTMutableTextStyle textStyle];
+	textStyle.color = [CPTColor whiteColor];
+    textStyle.fontSize = 18.0f;
+    textStyle.fontName = @"Helvetica";
+    graph.title = @"Click to Toggle Range Plot Style";
+    graph.titleTextStyle = textStyle;
+    graph.titleDisplacement = CGPointMake(0.0f, -20.0f);
+    
+    // Setup scatter plot space
     CPTXYPlotSpace *plotSpace = (CPTXYPlotSpace *)graph.defaultPlotSpace;
-    plotSpace.allowsUserInteraction = YES;
-    plotSpace.xRange = [CPTPlotRange plotRangeWithLocation:CPTDecimalFromFloat(1.0) length:CPTDecimalFromFloat(2.0)];
+    NSTimeInterval xLow = oneDay*0.5f;
+    plotSpace.xRange = [CPTPlotRange plotRangeWithLocation:CPTDecimalFromFloat(xLow) length:CPTDecimalFromFloat(oneDay*5.0f)];
     plotSpace.yRange = [CPTPlotRange plotRangeWithLocation:CPTDecimalFromFloat(1.0) length:CPTDecimalFromFloat(3.0)];
     
     // Axes
 	CPTXYAxisSet *axisSet = (CPTXYAxisSet *)graph.axisSet;
     CPTXYAxis *x = axisSet.xAxis;
-    x.majorIntervalLength = CPTDecimalFromString(@"0.5");
+    x.majorIntervalLength = CPTDecimalFromFloat(oneDay);
     x.orthogonalCoordinateDecimal = CPTDecimalFromString(@"2");
-    x.minorTicksPerInterval = 2;
- 	NSArray *exclusionRanges = [NSArray arrayWithObjects:
-                                [CPTPlotRange plotRangeWithLocation:CPTDecimalFromFloat(1.99) length:CPTDecimalFromFloat(0.02)], 
-                                [CPTPlotRange plotRangeWithLocation:CPTDecimalFromFloat(0.99) length:CPTDecimalFromFloat(0.02)],
-                                [CPTPlotRange plotRangeWithLocation:CPTDecimalFromFloat(2.99) length:CPTDecimalFromFloat(0.02)],
-                                nil];
-	x.labelExclusionRanges = exclusionRanges;
+    x.minorTicksPerInterval = 0;
+    NSDateFormatter *dateFormatter = [[[NSDateFormatter alloc] init] autorelease];
+    dateFormatter.dateStyle = kCFDateFormatterShortStyle;
+    CPTTimeFormatter *timeFormatter = [[[CPTTimeFormatter alloc] initWithDateFormatter:dateFormatter] autorelease];
+    timeFormatter.referenceDate = refDate;
+    x.labelFormatter = timeFormatter;
     
     CPTXYAxis *y = axisSet.yAxis;
     y.majorIntervalLength = CPTDecimalFromString(@"0.5");
     y.minorTicksPerInterval = 5;
-    y.orthogonalCoordinateDecimal = CPTDecimalFromString(@"2");
-	exclusionRanges = [NSArray arrayWithObjects:
-                       [CPTPlotRange plotRangeWithLocation:CPTDecimalFromFloat(1.99) length:CPTDecimalFromFloat(0.02)], 
-                       [CPTPlotRange plotRangeWithLocation:CPTDecimalFromFloat(0.99) length:CPTDecimalFromFloat(0.02)],
-                       [CPTPlotRange plotRangeWithLocation:CPTDecimalFromFloat(3.99) length:CPTDecimalFromFloat(0.02)],
-                       nil];
-	y.labelExclusionRanges = exclusionRanges;
+    y.orthogonalCoordinateDecimal = CPTDecimalFromFloat(oneDay);
     
-	// Create a blue plot area
-	CPTScatterPlot *boundLinePlot = [[[CPTScatterPlot alloc] init] autorelease];
-    CPTMutableLineStyle *lineStyle = [CPTMutableLineStyle lineStyle];
-    lineStyle.miterLimit = 1.0f;
-	lineStyle.lineWidth = 3.0f;
-	lineStyle.lineColor = [CPTColor blueColor];
-    boundLinePlot.dataLineStyle = lineStyle;
-    boundLinePlot.identifier = @"Blue Plot";
-    boundLinePlot.dataSource = self;
-	[graph addPlot:boundLinePlot];
-	
-	// Do a blue gradient
-	CPTColor *areaColor1 = [CPTColor colorWithComponentRed:0.3 green:0.3 blue:1.0 alpha:0.8];
-    CPTGradient *areaGradient1 = [CPTGradient gradientWithBeginningColor:areaColor1 endingColor:[CPTColor clearColor]];
-    areaGradient1.angle = -90.0f;
-    CPTFill *areaGradientFill = [CPTFill fillWithGradient:areaGradient1];
-    boundLinePlot.areaFill = areaGradientFill;
-    boundLinePlot.areaBaseValue = [[NSDecimalNumber zero] decimalValue];    
+    // Create a plot that uses the data source method
+	CPTRangePlot *dataSourceLinePlot = [[[CPTRangePlot alloc] init] autorelease];
+    dataSourceLinePlot.identifier = @"Date Plot";
     
-	// Add plot symbols
-	CPTMutableLineStyle *symbolLineStyle = [CPTMutableLineStyle lineStyle];
-	symbolLineStyle.lineColor = [CPTColor blackColor];
-	CPTPlotSymbol *plotSymbol = [CPTPlotSymbol ellipsePlotSymbol];
-	plotSymbol.fill = [CPTFill fillWithColor:[CPTColor blueColor]];
-	plotSymbol.lineStyle = symbolLineStyle;
-    plotSymbol.size = CGSizeMake(10.0, 10.0);
-    boundLinePlot.plotSymbol = plotSymbol;
-    
-    // Create a green plot area
-	CPTScatterPlot *dataSourceLinePlot = [[[CPTScatterPlot alloc] init] autorelease];
-    lineStyle = [CPTMutableLineStyle lineStyle];
-    lineStyle.lineWidth = 3.f;
+	// Add line style
+	CPTMutableLineStyle *lineStyle = [CPTMutableLineStyle lineStyle];
+	lineStyle.lineWidth = 1.0f;
     lineStyle.lineColor = [CPTColor greenColor];
-	lineStyle.dashPattern = [NSArray arrayWithObjects:[NSNumber numberWithFloat:5.0f], [NSNumber numberWithFloat:5.0f], nil];
-    dataSourceLinePlot.dataLineStyle = lineStyle;
-    dataSourceLinePlot.identifier = @"Green Plot";
+    barLineStyle = [lineStyle retain];
+    dataSourceLinePlot.barLineStyle = barLineStyle;
+    
+    // Bar properties
+	dataSourceLinePlot.barWidth = 10.0f;
+	dataSourceLinePlot.gapWidth = 20.0f;
+	dataSourceLinePlot.gapHeight = 20.0f;
     dataSourceLinePlot.dataSource = self;
     
-    // Put an area gradient under the plot above
-    CPTColor *areaColor = [CPTColor colorWithComponentRed:0.3 green:1.0 blue:0.3 alpha:0.8];
-    CPTGradient *areaGradient = [CPTGradient gradientWithBeginningColor:areaColor endingColor:[CPTColor clearColor]];
-    areaGradient.angle = -90.0f;
-    areaGradientFill = [CPTFill fillWithGradient:areaGradient];
-    dataSourceLinePlot.areaFill = areaGradientFill;
-    dataSourceLinePlot.areaBaseValue = CPTDecimalFromString(@"1.75");
-    
-	// Animate in the new plot, as an example
-	dataSourceLinePlot.opacity = 0.0f;
+    // Add plot
     [graph addPlot:dataSourceLinePlot];
-	
-	CABasicAnimation *fadeInAnimation = [CABasicAnimation animationWithKeyPath:@"opacity"];
-	fadeInAnimation.duration = 1.0f;
-	fadeInAnimation.removedOnCompletion = NO;
-	fadeInAnimation.fillMode = kCAFillModeForwards;
-	fadeInAnimation.toValue = [NSNumber numberWithFloat:1.0];
-	[dataSourceLinePlot addAnimation:fadeInAnimation forKey:@"animateOpacity"];
-	
-    // Add some initial data
-	NSMutableArray *contentArray = [NSMutableArray arrayWithCapacity:100];
-	NSUInteger i;
-	for ( i = 0; i < 60; i++ ) {
-		id x = [NSNumber numberWithFloat:1+i*0.05];
-		id y = [NSNumber numberWithFloat:1.2*rand()/(float)RAND_MAX + 1.2];
-		[contentArray addObject:[NSMutableDictionary dictionaryWithObjectsAndKeys:x, @"x", y, @"y", nil]];
-	}
-	self.dataForPlot = contentArray;
+    graph.defaultPlotSpace.delegate = self;
     
-#ifdef PERFORMANCE_TEST
-    [NSTimer scheduledTimerWithTimeInterval:2.0 target:self selector:@selector(changePlotRange) userInfo:nil repeats:YES];
-#endif
-}
-
--(void)changePlotRange 
-{
-    // Setup plot space
-    CPTXYPlotSpace *plotSpace = (CPTXYPlotSpace *)graph.defaultPlotSpace;
-    plotSpace.xRange = [CPTPlotRange plotRangeWithLocation:CPTDecimalFromFloat(0.0) length:CPTDecimalFromFloat(3.0 + 2.0*rand()/RAND_MAX)];
-    plotSpace.yRange = [CPTPlotRange plotRangeWithLocation:CPTDecimalFromFloat(0.0) length:CPTDecimalFromFloat(3.0 + 2.0*rand()/RAND_MAX)];
+    // Store area fill for use later
+    CPTColor *transparentGreen = [[CPTColor greenColor] colorWithAlphaComponent:0.2];
+    areaFill = [[CPTFill alloc] initWithColor:(id)transparentGreen];
+    
+    // Add some data
+	NSMutableArray *newData = [NSMutableArray array];
+	NSUInteger i;
+	for ( i = 0; i < 5; i++ ) {
+		NSTimeInterval x = oneDay*(i+1.0);
+		float y = 3.0f*rand()/(float)RAND_MAX + 1.2f;
+		float rHigh = rand()/(float)RAND_MAX * 0.5f + 0.25f;
+		float rLow = rand()/(float)RAND_MAX * 0.5f + 0.25f;
+		float rLeft = (rand()/(float)RAND_MAX * 0.125f + 0.125f) * oneDay;
+		float rRight = (rand()/(float)RAND_MAX * 0.125f + 0.125f)  * oneDay;
+		
+		[newData addObject:
+         [NSDictionary dictionaryWithObjectsAndKeys:
+          [NSDecimalNumber numberWithFloat:x], [NSNumber numberWithInt:CPTRangePlotFieldX], 
+          [NSDecimalNumber numberWithFloat:y], [NSNumber numberWithInt:CPTRangePlotFieldY], 
+          [NSDecimalNumber numberWithFloat:rHigh], [NSNumber numberWithInt:CPTRangePlotFieldHigh], 
+          [NSDecimalNumber numberWithFloat:rLow], [NSNumber numberWithInt:CPTRangePlotFieldLow], 
+          [NSDecimalNumber numberWithFloat:rLeft], [NSNumber numberWithInt:CPTRangePlotFieldLeft], 
+          [NSDecimalNumber numberWithFloat:rRight], [NSNumber numberWithInt:CPTRangePlotFieldRight], 
+          nil]];
+	}
+	plotData = newData;
 }
 
 #pragma mark -
 #pragma mark Plot Data Source Methods
 
--(NSUInteger)numberOfRecordsForPlot:(CPTPlot *)plot {
-    return [dataForPlot count];
+-(NSUInteger)numberOfRecordsForPlot:(CPTPlot *)plot
+{
+    return plotData.count;
 }
 
--(NSNumber *)numberForPlot:(CPTPlot *)plot field:(NSUInteger)fieldEnum recordIndex:(NSUInteger)index 
+-(NSNumber *)numberForPlot:(CPTPlot *)plot field:(NSUInteger)fieldEnum recordIndex:(NSUInteger)index
 {
-    NSNumber *num = [[dataForPlot objectAtIndex:index] valueForKey:(fieldEnum == CPTScatterPlotFieldX ? @"x" : @"y")];
-	// Green plot gets shifted above the blue
-	if ([(NSString *)plot.identifier isEqualToString:@"Green Plot"])
-	{
-		if ( fieldEnum == CPTScatterPlotFieldY ) 
-			num = [NSNumber numberWithDouble:[num doubleValue] + 1.0];
-	}
+    NSDecimalNumber *num = [[plotData objectAtIndex:index] objectForKey:[NSNumber numberWithInt:fieldEnum]];
     return num;
 }
+
+- (BOOL)plotSpace:(CPTPlotSpace *)space shouldHandlePointingDeviceUpEvent:(id)event atPoint:(CGPoint)point {
+    CPTRangePlot *rangePlot = (CPTRangePlot *)[graph plotWithIdentifier:@"Date Plot"];
+    rangePlot.areaFill = ( rangePlot.areaFill ? nil : areaFill );
+    rangePlot.barLineStyle = ( rangePlot.barLineStyle ? nil : barLineStyle );
+    
+    return NO;
+}
+
 @end
