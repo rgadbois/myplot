@@ -16,23 +16,45 @@
 		CEAB03F314087D7400323E6D /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEAB03F114087D7400323E6D /* MainWindow.xib */; };
 		CEAB03F614087D7400323E6D /* myplotViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEAB03F514087D7400323E6D /* myplotViewController.m */; };
 		CEAB03F914087D7400323E6D /* myplotViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEAB03F714087D7400323E6D /* myplotViewController.xib */; };
+		CEAB040D14087DE500323E6D /* libCorePlot-CocoaTouch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CEAB040C14087DE500323E6D /* libCorePlot-CocoaTouch.a */; };
+		CEAB04351408B7C200323E6D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEAB04341408B7C200323E6D /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		CEAB040814087DB100323E6D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CEAB03FF14087DB000323E6D /* CorePlot-CocoaTouch.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = BC9B83470FB8A0A40035D8DA;
+			remoteInfo = "CorePlot-CocoaTouch";
+		};
+		CEAB040A14087DDA00323E6D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CEAB03FF14087DB000323E6D /* CorePlot-CocoaTouch.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = BC9B83460FB8A0A40035D8DA;
+			remoteInfo = "CorePlot-CocoaTouch";
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		CEAB03DB14087D7400323E6D /* myplot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = myplot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEAB03DF14087D7400323E6D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		CEAB03E114087D7400323E6D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		CEAB03E314087D7400323E6D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		CEAB03E714087D7400323E6D /* myplot-Info.plist */ = {isa = PBXFileReference; path = "myplot-Info.plist"; sourceTree = "<group>"; };
+		CEAB03E714087D7400323E6D /* myplot-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "myplot-Info.plist"; sourceTree = "<group>"; };
 		CEAB03E914087D7400323E6D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		CEAB03EB14087D7400323E6D /* myplot-Prefix.pch */ = {isa = PBXFileReference; path = "myplot-Prefix.pch"; sourceTree = "<group>"; };
+		CEAB03EB14087D7400323E6D /* myplot-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "myplot-Prefix.pch"; sourceTree = "<group>"; };
 		CEAB03EC14087D7400323E6D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		CEAB03EE14087D7400323E6D /* myplotAppDelegate.h */ = {isa = PBXFileReference; path = myplotAppDelegate.h; sourceTree = "<group>"; };
+		CEAB03EE14087D7400323E6D /* myplotAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = myplotAppDelegate.h; sourceTree = "<group>"; };
 		CEAB03EF14087D7400323E6D /* myplotAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = myplotAppDelegate.m; sourceTree = "<group>"; };
 		CEAB03F214087D7400323E6D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
-		CEAB03F414087D7400323E6D /* myplotViewController.h */ = {isa = PBXFileReference; path = myplotViewController.h; sourceTree = "<group>"; };
+		CEAB03F414087D7400323E6D /* myplotViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = myplotViewController.h; sourceTree = "<group>"; };
 		CEAB03F514087D7400323E6D /* myplotViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = myplotViewController.m; sourceTree = "<group>"; };
 		CEAB03F814087D7400323E6D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/myplotViewController.xib; sourceTree = "<group>"; };
+		CEAB03FF14087DB000323E6D /* CorePlot-CocoaTouch.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "CorePlot-CocoaTouch.xcodeproj"; path = "../core-plot/framework/CorePlot-CocoaTouch.xcodeproj"; sourceTree = "<group>"; };
+		CEAB040C14087DE500323E6D /* libCorePlot-CocoaTouch.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libCorePlot-CocoaTouch.a"; sourceTree = SOURCE_ROOT; };
+		CEAB04341408B7C200323E6D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,6 +62,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEAB04351408B7C200323E6D /* QuartzCore.framework in Frameworks */,
+				CEAB040D14087DE500323E6D /* libCorePlot-CocoaTouch.a in Frameworks */,
 				CEAB03E014087D7400323E6D /* UIKit.framework in Frameworks */,
 				CEAB03E214087D7400323E6D /* Foundation.framework in Frameworks */,
 				CEAB03E414087D7400323E6D /* CoreGraphics.framework in Frameworks */,
@@ -52,6 +76,8 @@
 		CEAB03D014087D7300323E6D = {
 			isa = PBXGroup;
 			children = (
+				CEAB040C14087DE500323E6D /* libCorePlot-CocoaTouch.a */,
+				CEAB03FF14087DB000323E6D /* CorePlot-CocoaTouch.xcodeproj */,
 				CEAB03E514087D7400323E6D /* myplot */,
 				CEAB03DE14087D7400323E6D /* Frameworks */,
 				CEAB03DC14087D7400323E6D /* Products */,
@@ -69,6 +95,7 @@
 		CEAB03DE14087D7400323E6D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CEAB04341408B7C200323E6D /* QuartzCore.framework */,
 				CEAB03DF14087D7400323E6D /* UIKit.framework */,
 				CEAB03E114087D7400323E6D /* Foundation.framework */,
 				CEAB03E314087D7400323E6D /* CoreGraphics.framework */,
@@ -101,6 +128,14 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		CEAB040014087DB000323E6D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CEAB040914087DB100323E6D /* libCorePlot-CocoaTouch.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -115,6 +150,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				CEAB040B14087DDA00323E6D /* PBXTargetDependency */,
 			);
 			name = myplot;
 			productName = myplot;
@@ -136,12 +172,28 @@
 			mainGroup = CEAB03D014087D7300323E6D;
 			productRefGroup = CEAB03DC14087D7400323E6D /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = CEAB040014087DB000323E6D /* Products */;
+					ProjectRef = CEAB03FF14087DB000323E6D /* CorePlot-CocoaTouch.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				CEAB03DA14087D7300323E6D /* myplot */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		CEAB040914087DB100323E6D /* libCorePlot-CocoaTouch.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libCorePlot-CocoaTouch.a";
+			remoteRef = CEAB040814087DB100323E6D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		CEAB03D914087D7300323E6D /* Resources */ = {
@@ -168,6 +220,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		CEAB040B14087DDA00323E6D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "CorePlot-CocoaTouch";
+			targetProxy = CEAB040A14087DDA00323E6D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		CEAB03E814087D7400323E6D /* InfoPlist.strings */ = {
@@ -232,12 +292,25 @@
 		CEAB03FD14087D7400323E6D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "myplot/myplot-Prefix.pch";
+				HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/../core-plot/framework\"/**";
 				INFOPLIST_FILE = "myplot/myplot-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
+				OTHER_LDFLAGS = (
+					"-all_load",
+					"-ObjC",
+				);
+				"OTHER_LDFLAGS[arch=*]" = (
+					"-all_load",
+					"-ObjC",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -246,11 +319,20 @@
 		CEAB03FE14087D7400323E6D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "myplot/myplot-Prefix.pch";
+				HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/../core-plot/framework\"/**";
 				INFOPLIST_FILE = "myplot/myplot-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
+				OTHER_LDFLAGS = (
+					"-all_load",
+					"-ObjC",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
@@ -276,6 +358,7 @@
 				CEAB03FE14087D7400323E6D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
