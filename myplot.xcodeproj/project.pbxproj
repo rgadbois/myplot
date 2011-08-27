@@ -1,0 +1,283 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		CEAB03E014087D7400323E6D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEAB03DF14087D7400323E6D /* UIKit.framework */; };
+		CEAB03E214087D7400323E6D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEAB03E114087D7400323E6D /* Foundation.framework */; };
+		CEAB03E414087D7400323E6D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEAB03E314087D7400323E6D /* CoreGraphics.framework */; };
+		CEAB03EA14087D7400323E6D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CEAB03E814087D7400323E6D /* InfoPlist.strings */; };
+		CEAB03ED14087D7400323E6D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CEAB03EC14087D7400323E6D /* main.m */; };
+		CEAB03F014087D7400323E6D /* myplotAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CEAB03EF14087D7400323E6D /* myplotAppDelegate.m */; };
+		CEAB03F314087D7400323E6D /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEAB03F114087D7400323E6D /* MainWindow.xib */; };
+		CEAB03F614087D7400323E6D /* myplotViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEAB03F514087D7400323E6D /* myplotViewController.m */; };
+		CEAB03F914087D7400323E6D /* myplotViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEAB03F714087D7400323E6D /* myplotViewController.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		CEAB03DB14087D7400323E6D /* myplot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = myplot.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CEAB03DF14087D7400323E6D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		CEAB03E114087D7400323E6D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		CEAB03E314087D7400323E6D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		CEAB03E714087D7400323E6D /* myplot-Info.plist */ = {isa = PBXFileReference; path = "myplot-Info.plist"; sourceTree = "<group>"; };
+		CEAB03E914087D7400323E6D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		CEAB03EB14087D7400323E6D /* myplot-Prefix.pch */ = {isa = PBXFileReference; path = "myplot-Prefix.pch"; sourceTree = "<group>"; };
+		CEAB03EC14087D7400323E6D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		CEAB03EE14087D7400323E6D /* myplotAppDelegate.h */ = {isa = PBXFileReference; path = myplotAppDelegate.h; sourceTree = "<group>"; };
+		CEAB03EF14087D7400323E6D /* myplotAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = myplotAppDelegate.m; sourceTree = "<group>"; };
+		CEAB03F214087D7400323E6D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
+		CEAB03F414087D7400323E6D /* myplotViewController.h */ = {isa = PBXFileReference; path = myplotViewController.h; sourceTree = "<group>"; };
+		CEAB03F514087D7400323E6D /* myplotViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = myplotViewController.m; sourceTree = "<group>"; };
+		CEAB03F814087D7400323E6D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/myplotViewController.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CEAB03D814087D7300323E6D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CEAB03E014087D7400323E6D /* UIKit.framework in Frameworks */,
+				CEAB03E214087D7400323E6D /* Foundation.framework in Frameworks */,
+				CEAB03E414087D7400323E6D /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		CEAB03D014087D7300323E6D = {
+			isa = PBXGroup;
+			children = (
+				CEAB03E514087D7400323E6D /* myplot */,
+				CEAB03DE14087D7400323E6D /* Frameworks */,
+				CEAB03DC14087D7400323E6D /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		CEAB03DC14087D7400323E6D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CEAB03DB14087D7400323E6D /* myplot.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CEAB03DE14087D7400323E6D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CEAB03DF14087D7400323E6D /* UIKit.framework */,
+				CEAB03E114087D7400323E6D /* Foundation.framework */,
+				CEAB03E314087D7400323E6D /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CEAB03E514087D7400323E6D /* myplot */ = {
+			isa = PBXGroup;
+			children = (
+				CEAB03EE14087D7400323E6D /* myplotAppDelegate.h */,
+				CEAB03EF14087D7400323E6D /* myplotAppDelegate.m */,
+				CEAB03F114087D7400323E6D /* MainWindow.xib */,
+				CEAB03F414087D7400323E6D /* myplotViewController.h */,
+				CEAB03F514087D7400323E6D /* myplotViewController.m */,
+				CEAB03F714087D7400323E6D /* myplotViewController.xib */,
+				CEAB03E614087D7400323E6D /* Supporting Files */,
+			);
+			path = myplot;
+			sourceTree = "<group>";
+		};
+		CEAB03E614087D7400323E6D /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				CEAB03E714087D7400323E6D /* myplot-Info.plist */,
+				CEAB03E814087D7400323E6D /* InfoPlist.strings */,
+				CEAB03EB14087D7400323E6D /* myplot-Prefix.pch */,
+				CEAB03EC14087D7400323E6D /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		CEAB03DA14087D7300323E6D /* myplot */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CEAB03FC14087D7400323E6D /* Build configuration list for PBXNativeTarget "myplot" */;
+			buildPhases = (
+				CEAB03D714087D7300323E6D /* Sources */,
+				CEAB03D814087D7300323E6D /* Frameworks */,
+				CEAB03D914087D7300323E6D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = myplot;
+			productName = myplot;
+			productReference = CEAB03DB14087D7400323E6D /* myplot.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CEAB03D214087D7300323E6D /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = CEAB03D514087D7300323E6D /* Build configuration list for PBXProject "myplot" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = CEAB03D014087D7300323E6D;
+			productRefGroup = CEAB03DC14087D7400323E6D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CEAB03DA14087D7300323E6D /* myplot */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CEAB03D914087D7300323E6D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CEAB03EA14087D7400323E6D /* InfoPlist.strings in Resources */,
+				CEAB03F314087D7400323E6D /* MainWindow.xib in Resources */,
+				CEAB03F914087D7400323E6D /* myplotViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CEAB03D714087D7300323E6D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CEAB03ED14087D7400323E6D /* main.m in Sources */,
+				CEAB03F014087D7400323E6D /* myplotAppDelegate.m in Sources */,
+				CEAB03F614087D7400323E6D /* myplotViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		CEAB03E814087D7400323E6D /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CEAB03E914087D7400323E6D /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		CEAB03F114087D7400323E6D /* MainWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CEAB03F214087D7400323E6D /* en */,
+			);
+			name = MainWindow.xib;
+			sourceTree = "<group>";
+		};
+		CEAB03F714087D7400323E6D /* myplotViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CEAB03F814087D7400323E6D /* en */,
+			);
+			name = myplotViewController.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		CEAB03FA14087D7400323E6D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		CEAB03FB14087D7400323E6D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+			};
+			name = Release;
+		};
+		CEAB03FD14087D7400323E6D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "myplot/myplot-Prefix.pch";
+				INFOPLIST_FILE = "myplot/myplot-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		CEAB03FE14087D7400323E6D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "myplot/myplot-Prefix.pch";
+				INFOPLIST_FILE = "myplot/myplot-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALIDATE_PRODUCT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CEAB03D514087D7300323E6D /* Build configuration list for PBXProject "myplot" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CEAB03FA14087D7400323E6D /* Debug */,
+				CEAB03FB14087D7400323E6D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CEAB03FC14087D7400323E6D /* Build configuration list for PBXNativeTarget "myplot" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CEAB03FD14087D7400323E6D /* Debug */,
+				CEAB03FE14087D7400323E6D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = CEAB03D214087D7300323E6D /* Project object */;
+}
